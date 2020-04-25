@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+  labels:
+    app: flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata: 
+      labels:
+        app: flask
+    spec:
+      volumes:
+        - name: database-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
+      containers:
+      - name: falsk
+        image:  anandrkskd/flaskapp:v0.3
+        ports:
+        - containerPort: 5000
+        volumeMounts: 
+          - name: database-storage
+            mountPath: /app/flaskblog/database/

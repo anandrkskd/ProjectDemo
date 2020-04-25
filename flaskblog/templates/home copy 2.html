@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    {% if title %}
+        <title>Review</title>
+    {% else %}
+        <title>Sentimental Analysis</title>
+    {% endif %}
+</head>
+<body>
+{% block content %}
+<header class="site-header">
+  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="/">Sentimental Analysis</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="/home">Home</a>
+          <a class="nav-item nav-link" href="/about">About</a>
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+          
+            <a class="nav-item nav-link" href="/account">Account</a>
+            <a class="nav-item nav-link" href="/logout">Logout</a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<form action="/home" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="login">
+        <div class="login-screen">
+            <div class="form-group">
+                {{ form.reviewdata.label(class="form-control-label") }}
+                    {{ form.reviewdata(class="form-control form-control-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </div>   
+    </div>
+  </form>
+    <div class="login">
+        <div class="login-screen">
+          {% if results %}
+            <h2>Sentiment</h2>
+            <br>
+            <div id="results">
+              <table class="table table-striped" style="max-width: 300px;">
+                <thead>
+                  <tr>
+                    <th>Analysis</th>
+                  </tr>
+                </thead>
+    <!-- Required meta tags -->
+                {% for result in results%}
+                  <tr>
+                    <td>{{ result }}</td>
+                  </tr>
+                {% endfor %}
+              </table>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    <br><br>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+{% endblock content %}
+</body>
+</html>
