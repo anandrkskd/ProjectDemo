@@ -1,3 +1,4 @@
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker build -t anandrkskd/flaskapp:latest -t anandrkskd/flaskapp:$SHA -f .
 
 docker push anandrkskd/flaskapp:latest
