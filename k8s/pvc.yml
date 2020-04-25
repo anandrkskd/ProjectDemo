@@ -6,7 +6,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: demo
   resources:
     requests:
       storage: 2Gi
