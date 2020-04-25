@@ -31,10 +31,9 @@ def home():
         ans=form.reviewdata.data
         testimonial = TextBlob(ans)
         analysis=str(testimonial.sentiment.polarity)
-        test.append(str(testimonial.sentiment))
+        test.append(current_user.username)
         test.append(str(testimonial))
         test.append(analysis)
-        test.append(ans)
     return render_template('home.html',title='home',form=form,results=test)
 
 

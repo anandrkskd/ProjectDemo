@@ -4,4 +4,4 @@ docker push anandrkskd/flaskapp:latest
 docker push anandrkskd/flaskapp:$SHA
 
 kubectl apply -f ./flaskblog/k8s
-kubectl set image deployments/server-deployment server=anandrkskd/flaskapp:$SHA
+kubectl set image deployments/flask-deployment flask=anandrkskd/flaskapp:$SHA
