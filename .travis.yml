@@ -17,6 +17,7 @@ before_install:
   - gcloud config set project flaskapp-275318
   - gcloud config set compute/zone us-central1-c
   - gcloud container clusters get-credentials flaskapp-cluster
+  - bash ./deploy.sh
 
 deploy:
   provider: script
