@@ -7,4 +7,5 @@ flask_login
 tweepy
 textblob
 numpy
+email_validator
 pandas
