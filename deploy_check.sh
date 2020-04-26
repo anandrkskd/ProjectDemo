@@ -1,1 +1,1 @@
-docker status
+docker ps
