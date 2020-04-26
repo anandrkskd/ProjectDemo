@@ -19,6 +19,9 @@ before_install:
   - gcloud container clusters get-credentials flaskapp-cluster
   - bash ./deploy.sh
 
+script:
+  - bash deploy_check.sh
+
 deploy:
   provider: script
   script: bash ./deploy.sh
