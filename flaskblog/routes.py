@@ -34,12 +34,17 @@ def home():
         test.append(current_user.username)
         test.append(str(testimonial))
         test.append(analysis)
+        post = Post(title=analysis, content=str(testimonial), author=current_user)
+        db.session.add(post)
+        db.session.commit()
     return render_template('home.html',title='home',form=form,results=test)
 
 
 @app.route("/about")
 def about():
-    return render_template('about.html', title='About')
+    test=[]
+    test.append(analize())
+    return render_template('about.html', title='About',results=test)
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -67,3 +72,16 @@ def logout():
 @login_required
 def account():
     return render_template('account.html', title='Account')
+
+def analize():
+    analized_data=[]
+    alldata=Post.query.all()
+    for data in alldata:
+        temp_data=data.title
+        analized_data.append(float(temp_data))
+    
+    avg_data=sum=0
+    for data in analized_data:
+        sum= sum+data
+    avg_data=float(sum/(len(analized_data)))
+    return avg_data

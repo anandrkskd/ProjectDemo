@@ -1,4 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>This is a Project on sentimental analysis</h1>
+    <div class="login">
+        <div class="login-screen">
+          {% if results %}
+            <div id="results">
+              <table class="table table-striped" style="max-width: 300px;">
+                <thead>
+                  <tr>
+                    <th>Overall Sentiment</th>
+                  </tr>
+                </thead>
+    <!-- Required meta tags -->
+                {% for result in results%}
+                  <tr>
+                    <td>{{ result }}</td>
+                  </tr>
+                {% endfor %}
+              </table>
+            </div>
+          {% endif %}
+        </div>
+      </div>
 {% endblock content %}

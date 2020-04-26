@@ -20,7 +20,7 @@ spec:
             claimName: database-persistent-volume-claim
       containers:
       - name: falsk
-        image:  anandrkskd/flaskapp:v0.3
+        image:  anandrkskd/flaskapp:$SHA
         ports:
         - containerPort: 5000
         volumeMounts: 
